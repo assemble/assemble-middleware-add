@@ -1,7 +1,7 @@
 {
   "name": "assemble-middleware-add",
   "description": "Add files to your Assemble file stream.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://github.com/assemble/assemble-middleware-add",
   "author": {
     "name": "Brian Woodward",
