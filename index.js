@@ -11,31 +11,29 @@ var through = require('through2');
 
 
 /**
- * ## .add
+ * ## add
  *
  * Add files to the current Assemble stream.
  *
- * **Example**
+ * **Usage**
  *
  * ```js
+ * var assemble = require('assemble');
+ * var add = require('assemble-middleware-add')(assemble);
  *
- *  var assemble = require('assemble');
- *  var add = require('assemble-middleware-add')(assemble);
- *
- *  assemble.src('path/to/pages/*.hbs')
- *    .pipe(assemble.dest('path/to/dest/pages/')
- *    .pipe(add('path/to/posts/*.md'))
- *    .pipe(assemble.dest('path/to/dest/blog/');
- *
+ * assemble.src('path/to/pages/*.hbs')
+ *   .pipe(assemble.dest('path/to/dest/pages/')
+ *   .pipe(add('path/to/posts/*.md'))
+ *   .pipe(assemble.dest('path/to/dest/blog/');
  * ```
  *
- * @param assemble
- * @returns {addSrc}
+ * @param {Object} `assemble` instance of assemble
+ * @return {Function} `addSrc` function to be used to create a stream.
  */
 
-module.exports = function add (assemble) {
+module.exports = function (assemble) {
 
-  var addSrc = function addSrc (glob, options) {
+  return function add (glob, options) {
 
     // forget the initial files
     return through.obj(function (file, enc, callback) {
@@ -65,7 +63,5 @@ module.exports = function add (assemble) {
             }));
       });
   };
-
-  return addSrc;
 
 };

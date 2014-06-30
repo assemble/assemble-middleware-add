@@ -1,7 +1,7 @@
 <!-- `.verbrc.md` is a README.md template and documentation config file for Verb. See https://github.com/assemble/verb for more info. -->
 # assemble-middleware-add [![NPM version](https://badge.fury.io/js/assemble-middleware-add.png)](http://badge.fury.io/js/assemble-middleware-add)
 
-> Add additional files into your Assemble file stream.
+> Add files to your Assemble file stream.
 
 ## Install
 Install with [npm](npmjs.org):
@@ -9,6 +9,26 @@ Install with [npm](npmjs.org):
 ```bash
 npm i assemble-middleware-add --save-dev
 ```
+
+## Add
+### add
+
+Add files to the current Assemble stream.
+
+**Usage**
+
+```js
+var assemble = require('assemble');
+var add = require('assemble-middleware-add')(assemble);
+
+assemble.src('path/to/pages/*.hbs')
+  .pipe(assemble.dest('path/to/dest/pages/')
+  .pipe(add('path/to/posts/*.md'))
+  .pipe(assemble.dest('path/to/dest/blog/');
+```
+
+* `assemble` {Object}: instance of assemble  
+* `return` {Function} `addSrc` function to be used to create a stream.
 
 ## Author
 
